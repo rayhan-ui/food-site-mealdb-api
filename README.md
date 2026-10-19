@@ -2,9 +2,7 @@
 
 A responsive food and recipe finder. Search any dish, browse meals by category, and open a full recipe with step-by-step instructions and a YouTube video. Built with **vanilla JavaScript**, **Bootstrap 5** and [TheMealDB](https://www.themealdb.com/api.php) API. No frameworks, no build step.
 
-🔗 **Live demo:** [rayhan-ui.github.io/hungry-deals](https://rayhan-ui.github.io/hungry-deals)
-
-![Hungr!Deals screenshot](screenshots/home.png)
+🔗 **Live demo:** https://food-site-mealdb-api.vercel.app/
 
 ## ✨ Features
 
