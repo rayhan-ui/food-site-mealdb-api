@@ -1,0 +1,304 @@
+/* =========================================================
+   Hungr!Deals — custom styles (sits on top of Bootstrap 5)
+   ========================================================= */
+
+:root {
+  --cream: #faf6ef;
+  --cream-2: #f1eadc;
+  --ink: #26201a;
+  --muted: #6f655a;
+  --line: #e6dccb;
+  --accent: #c8442b;
+  --accent-dark: #a73620;
+  --footer: #211b16;
+
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(60, 40, 20, 0.12);
+
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+}
+
+/* ---------- base ---------- */
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, .card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+
+/* ---------- navbar ---------- */
+.site-nav {
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  padding-block: 0.7rem;
+}
+
+.site-nav .navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+.site-nav .navbar-brand .bang { color: var(--accent); }
+.site-nav .navbar-brand .dotcom {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.site-nav .nav-link {
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active { color: var(--accent); }
+
+.dropdown-menu {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.dropdown-item:active { background: var(--accent); }
+
+.search-form .form-control {
+  min-width: 230px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding-inline: 1.1rem;
+}
+.search-form .form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(200, 68, 43, 0.15);
+}
+
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding-inline: 1.3rem;
+  font-weight: 600;
+}
+.btn-accent:hover,
+.btn-accent:focus {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  padding: 4.5rem 0 3rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(200, 68, 43, 0.07), transparent 40%),
+    var(--cream);
+}
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* ---------- messages (error / empty) ---------- */
+.notice {
+  max-width: 520px;
+  margin: 0 auto 1.5rem;
+  padding: 0.9rem 1.2rem;
+  text-align: center;
+  color: #8a2a18;
+  background: #fbe9e4;
+  border: 1px solid #f0c8bd;
+  border-radius: var(--radius);
+}
+
+/* ---------- section headings ---------- */
+.section-title {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+/* hide a heading when the grid under it is empty */
+.section-title:has(+ .row:empty) { display: none; }
+
+/* ---------- cards (results + categories) ---------- */
+#display .card,
+#default .card {
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#display .card:hover,
+#default .card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+#display .card-img-top,
+#default .card-img-top {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+#display .card:hover .card-img-top { transform: scale(1.05); }
+
+/* category thumbnails are cut-out pngs, so show them whole */
+#default .card-img-top {
+  object-fit: contain;
+  background: var(--cream-2);
+  padding: 0.8rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+.card-title { font-size: 1.15rem; }
+
+.card-text {
+  color: var(--muted);
+  font-size: 0.93rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card .btn { margin-top: auto; }
+
+.btn-outline-primary {
+  --bs-btn-color: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--accent-dark);
+  --bs-btn-active-border-color: var(--accent-dark);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.btn-outline-danger { border-radius: 999px; font-weight: 600; }
+
+/* ---------- details card (single meal) ---------- */
+#details { margin: 2.5rem 0 1rem; }
+#details:empty { display: none; }
+
+#details .card {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  cursor: default;
+  animation: rise 0.4s ease;
+}
+
+#details .card img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+}
+
+#details .card-body { padding: 1.6rem; }
+#details .card-title { font-size: 1.7rem; margin-bottom: 1rem; }
+
+#details .card-text {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  white-space: pre-line;
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+}
+
+#details .btn { margin-top: 0; width: auto !important; align-self: flex-start; }
+
+@media (min-width: 768px) {
+  #details .card { grid-template-columns: minmax(260px, 38%) 1fr; }
+  #details .card-body { padding: 2rem 2.2rem; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  margin-top: 3rem;
+  background: var(--footer);
+  color: #cfc6b8;
+}
+.site-footer h5 {
+  color: #fff;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+.site-footer a {
+  color: #cfc6b8;
+  text-decoration: none;
+}
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+.site-footer address { line-height: 1.8; }
+.site-footer li { margin-bottom: 0.35rem; }
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.88rem;
+  background: #17120e;
+  color: #8f8678;
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 991px) {
+  .search-form { margin-top: 0.5rem; }
+  .search-form .form-control { min-width: 0; flex: 1; }
+}
+@media (max-width: 576px) {
+  .hero { padding: 3rem 0 2rem; }
+}

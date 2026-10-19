@@ -1,128 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hungry Deals</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search any dish, browse by category and see the full recipe with a video.">
+  <title>Hungr!Deals | Find your next meal</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍲</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ---------nav--------- -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
-        <div class="container-fluid">
-          <a class="navbar-brand" 
-          href="index2.html">Hungr!Deals.com</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index2.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Favorites</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Craving for
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Trending items</a></li>
-                  <li><a class="dropdown-item" href="#">My Favorite</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" >Locate me</a>
-              </li>
+
+  <!-- ---------nav--------- -->
+  <nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Hungr<span class="bang">!</span>Deals<span class="dotcom">.com</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Favorites</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Craving for
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Trending items</a></li>
+              <li><a class="dropdown-item" href="#">My Favorite</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else</a></li>
             </ul>
-            <div  class="d-flex" role="search">
-              <input id = "search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button onclick="searchFood()" class="btn btn-outline-success" type="submit">Search</button>
-            </div>
-            
-          </div>
-        </div>
-      </nav>
-      <p id="error" class="text-danger text-center" >
-              Product does not match... <br>Please try again with valid product name.
-      </p>
-      <p id="error2" class="text-danger text-center" >
-              Search field is empty. Please input food name.
-      </p>
-    <!-- ----------nav----------- -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Locate me</a>
+          </li>
+        </ul>
 
-
-    <!-- ----------section------------ -->
-    <section class="container">
-      <div id="details" class="my-5 w-75 mx-auto">
-
+        <!-- Enter key now works too: the form triggers searchFood() on submit -->
+        <form class="d-flex search-form" role="search" onsubmit="event.preventDefault(); searchFood()">
+          <input id="search-input" class="form-control me-2" type="search" placeholder="Try pasta, chicken, cake..." aria-label="Search">
+          <button class="btn btn-accent" type="submit">Search</button>
+        </form>
       </div>
-      <div id="display" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-
-      </div>
-
-      <div id="defaultDetails" class="my-5 w-75 mx-auto">
-
-      </div>
-      <div id="default" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-
-      </div>
-    </section>
-    <!-- ----------section------------ -->
+    </div>
+  </nav>
+  <!-- ----------nav----------- -->
 
 
-<!-- ---------footer-------- -->
-
+  <!-- ----------hero----------- -->
+  <header class="hero">
+    <div class="container">
+      <p class="hero-kicker">Recipes from around the world</p>
+      <h1 class="hero-title">What are you <em>craving</em> today?</h1>
+      <p class="hero-sub">Search for a dish, or browse the categories below. Tap any card to see the full recipe and a video.</p>
+    </div>
+  </header>
+  <!-- ----------hero----------- -->
 
-  <footer class="bg-dark text-white mt-5">
-    <div class="container py-4">
-      <div class="row">
+
+  <!-- ----------messages----------- -->
+  <div class="container">
+    <p id="error" class="notice">
+      Product does not match...<br>Please try again with a valid product name.
+    </p>
+    <p id="error2" class="notice">
+      Search field is empty. Please input a food name.
+    </p>
+  </div>
+
+
+  <!-- ----------section------------ -->
+  <main class="container pb-5">
+    <div id="details"></div>
+
+    <h2 class="section-title">Results</h2>
+    <div id="display" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4"></div>
+
+    <h2 class="section-title">Browse by category</h2>
+    <div id="default" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4"></div>
+  </main>
+  <!-- ----------section------------ -->
+
+
+  <!-- ---------footer-------- -->
+  <footer class="site-footer">
+    <div class="container py-5">
+      <div class="row gy-4">
         <div class="col-md-4">
-          <h5>About Us</h5>
-          <p>This is a demo food app. </p>
+          <h5>About</h5>
+          <p>Hungr!Deals is a small food app: pick a dish, read how it's made, watch the video. Recipe data comes from TheMealDB.</p>
         </div>
         <div class="col-md-4">
           <h5>Links</h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Home</a></li>
-            <li><a href="#" class="text-white">About</a></li>
-            <li><a href="#" class="text-white">Services</a></li>
-            <li><a href="#" class="text-white">Contact</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
         <div class="col-md-4">
-          <h5>Contact Us</h5>
+          <h5>Contact</h5>
           <address>
             123 Main St.<br>
             Anytown, USA<br>
-            <a href="mailto:info@example.com" class="text-white">info@example.com</a><br>
-            <a href="tel:+1234567890" class="text-white">+1 (234) 567-890</a>
+            <a href="mailto:info@example.com">info@example.com</a><br>
+            <a href="tel:+1234567890">+1 (234) 567-890</a>
           </address>
         </div>
       </div>
     </div>
-    <div class="bg-secondary text-center py-3">
-      <p class="mb-0">&copy; 2024 Hungr!Deals.com. All rights reserved.</p>
+    <div class="footer-bottom">
+      <p class="mb-0">&copy; 2026 Hungr!Deals.com. All rights reserved.</p>
     </div>
   </footer>
 
-
-
-
-<!-- ---------footer-------- -->
-
-
-
-
-
-
-
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
